@@ -1,0 +1,26 @@
+Role:
+    type: entity
+    table: Role
+    uniqueConstraints:
+        Name:
+            columns:
+                - Name
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+            column: Name
+    lifecycleCallbacks: {  }

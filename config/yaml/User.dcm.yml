@@ -1,0 +1,95 @@
+User:
+    type: entity
+    table: User
+    indexes:
+        Role:
+            columns:
+                - Role
+    uniqueConstraints:
+        Username:
+            columns:
+                - Username
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        lastname:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: LastName
+        name:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Name
+        email:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Email
+        password:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Password
+        city:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: City
+        street:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Street
+        streetnumber:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: StreetNumber
+        postalcode:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: PostalCode
+        username:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Username
+    manyToOne:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Role:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

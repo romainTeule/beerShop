@@ -1,0 +1,350 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="User", uniqueConstraints={@ORM\UniqueConstraint(name="Username", columns={"Username"})}, indexes={@ORM\Index(name="Role", columns={"Role"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LastName", type="string", length=40, nullable=false)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=40, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Email", type="string", length=40, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Password", type="string", length=40, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="City", type="string", length=40, nullable=false)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Street", type="string", length=40, nullable=false)
+     */
+    private $street;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="StreetNumber", type="integer", nullable=false)
+     */
+    private $streetnumber;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PostalCode", type="integer", nullable=false)
+     */
+    private $postalcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Username", type="string", length=40, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var \Role
+     *
+     * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Role", referencedColumnName="ID",columnDefinition="INT NOT NULL DEFAULT 0")
+     * })
+     */
+    private $role;
+
+ public function __construct() {
+       
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set street
+     *
+     * @param string $street
+     *
+     * @return User
+     */
+    public function setStreet($street)
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    /**
+     * Get street
+     *
+     * @return string
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * Set streetnumber
+     *
+     * @param integer $streetnumber
+     *
+     * @return User
+     */
+    public function setStreetnumber($streetnumber)
+    {
+        $this->streetnumber = $streetnumber;
+
+        return $this;
+    }
+
+    /**
+     * Get streetnumber
+     *
+     * @return integer
+     */
+    public function getStreetnumber()
+    {
+        return $this->streetnumber;
+    }
+
+    /**
+     * Set postalcode
+     *
+     * @param integer $postalcode
+     *
+     * @return User
+     */
+    public function setPostalcode($postalcode)
+    {
+        $this->postalcode = $postalcode;
+
+        return $this;
+    }
+
+    /**
+     * Get postalcode
+     *
+     * @return integer
+     */
+    public function getPostalcode()
+    {
+        return $this->postalcode;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Role $role
+     *
+     * @return User
+     */
+    public function setRole(\Role $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Role
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+}

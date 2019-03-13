@@ -1,0 +1,39 @@
+Product:
+    type: entity
+    table: Product
+    uniqueConstraints:
+        Nom:
+            columns:
+                - Nom
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Nom
+        description:
+            type: text
+            nullable: false
+            length: 16777215
+            options:
+                fixed: false
+            column: Description
+        prix:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: Prix
+    lifecycleCallbacks: {  }

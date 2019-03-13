@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    <head>
+        
+       
+          <link rel="stylesheet" type="text/css" href="{{ base_url}}/asset/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="{{ base_url}}/asset/css/style.css">
+            <title>{% block title %}{% endblock %} </title>
+        
+    </head>
+     {% endblock %}
+    <body>
+        
+        {%include 'navbar.twig'%}
+        <div id="content">{% block content %}{% endblock %}</div>
+        
+    </body>
+</html>
+
+{% block scripts %}
+   
+     {% endblock %}

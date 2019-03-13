@@ -1,0 +1,20 @@
+{
+    "name":"vendor/package",
+    "description":"Description projet",
+    "license":"GPL3.0+",
+    "authors": [
+        {
+            "name":"User name",
+            "email":"user@server.com"
+        }],
+    "require":{
+        "twig/twig":"~1.0",
+        "slim/slim":"^3.0",
+        "slim/twig-view":"*",
+        "doctrine/orm":"2.*",
+        "symfony/yaml":"*",
+        "monolog/monolog": "^1.24"
+    },
+    "autoload":
+    {"classmap":["src/"]}
+}

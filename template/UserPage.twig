@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+{% block head %}
+    {{ parent() }}
+    
+{% endblock %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+	<div id="container">
+	<div class="row">
+			<div class=" col-md-6" >
+				<label>Nom</label>
+				 {{surname}}
+	   			
+			</div>
+			<div class=" col-md-6" >
+				<label>Prenom</label>
+				  {{name}}
+			</div>
+		</div>
+	
+	</div>	
+</div>
+{% endblock %}
+
