@@ -44,7 +44,7 @@ User:
         password:
             type: string
             nullable: false
-            length: 40
+            length: 100
             options:
                 fixed: false
             column: Password

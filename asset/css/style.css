@@ -11,3 +11,12 @@ input[type="number"] {
 	padding-left: 10%;
 	padding-right: 10%;
 }
+
+
+body {
+ margin: 0;
+background-color: #ffffff;
+ background-repeat:no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}

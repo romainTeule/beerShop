@@ -3,12 +3,42 @@
     {{ parent() }}
     
 {% endblock %}
-{% block title %}{{title}}{% endblock %}
+
 {% block content %}
 
 	<div id="container">
-<h1>{{title}}</h1>
+       
+<div class="">
+	<div class="row">
+ {% for product in products %}
+ <div class="col-md-6">
+ 	<form> 
+		<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>Nom</label>
+				 <input type="text"  class=" form-control-plaintext"  id="nom" name="nom" value="{{product.name}}" placeholder="Entrez le nom du produit"  readonly >
+	   			
+			</div>
+			<div class="form-group col-md-3" >
+				<label>Prix</label>
+				 <input type="number" class="form-control-plaintext" id="prix" name="prix" step="any"  value="{{product.price}}" placeholder="Entrez le prix"  readonly>
+	   			
+			</div>
+			<div class="form-group col-md-9" >
+				<label>Description</label>
+				 <textarea   class="form-control-plaintext" id="description" name="description"  placeholder="Entrez une description"  readonly >{{product.description}}</textarea>
+	   			 <input type="hidden" id="offset" name="offset" value="{{crtOffset}}">
+			</div>
+		</div>
+	        	
+	        
+	        
+	    </form>
+ 	</div>
+ {% endfor %}
+ </div>
+</div>
 
-<a href="/form">Formulaire</a>
+
 </div>
 {% endblock %}

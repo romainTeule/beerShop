@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Product
  *
- * @ORM\Table(name="Product", uniqueConstraints={@ORM\UniqueConstraint(name="Nom", columns={"Nom"})})
+ * @ORM\Table(name="Product", uniqueConstraints={@ORM\UniqueConstraint(name="Nom", columns={"Name"})})
  * @ORM\Entity
  */
 class Product
@@ -24,9 +24,9 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom", type="string", length=40, nullable=false)
+     * @ORM\Column(name="Name", type="string", length=40, nullable=false)
      */
-    private $nom;
+    private $name;
 
     /**
      * @var string
@@ -38,9 +38,9 @@ class Product
     /**
      * @var float
      *
-     * @ORM\Column(name="Prix", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="Price", type="float", precision=10, scale=0, nullable=false)
      */
-    private $prix;
+    private $price;
 
 
     /**
@@ -54,27 +54,27 @@ class Product
     }
 
     /**
-     * Set nom
+     * Set name
      *
-     * @param string $nom
+     * @param string $name
      *
      * @return Product
      */
-    public function setNom($nom)
+    public function setName($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get name
      *
      * @return string
      */
-    public function getNom()
+    public function getName()
     {
-        return $this->nom;
+        return $this->name;
     }
 
     /**
@@ -102,26 +102,27 @@ class Product
     }
 
     /**
-     * Set prix
+     * Set price
      *
-     * @param float $prix
+     * @param float $price
      *
      * @return Product
      */
-    public function setPrix($prix)
+    public function setPrice($price)
     {
-        $this->prix = $prix;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get prix
+     * Get price
      *
      * @return float
      */
-    public function getPrix()
+    public function getPrice()
     {
-        return $this->prix;
+        return $this->price;
     }
 }
+

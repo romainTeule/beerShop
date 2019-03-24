@@ -89,11 +89,14 @@ class User
      *
      * @ORM\ManyToOne(targetEntity="Role")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Role", referencedColumnName="ID")
+     *   @ORM\JoinColumn(name="Role", referencedColumnName="ID",columnDefinition="INT NOT NULL DEFAULT 0")
      * })
      */
     private $role;
 
+ public function __construct() {
+       
+    }
 
     /**
      * Get id

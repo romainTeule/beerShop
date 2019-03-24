@@ -6,19 +6,39 @@
 {% block title %}{{title}}{% endblock %}
 {% block content %}
 	<div id="container">
-	<form id="formulaire" action="/validate" method="post"> 
-		<div class="form-row">
+	    
+	    <form>
+	        
+        <div class="form-row">
 			<div class="form-group col-md-6" >
 				<label>Nom</label>
-				 <input type="text" pattern="[A-Za-z]*" class="form-control" id="nom" name="nom"  placeholder="Entrez votre nom" value="{{ lastname|default('') }}" required>
+				 <input type="text" readonly class="form-control-plaintext" id="nom" name="nom"  placeholder="Entrez votre nom" value="{{ lastname|default('') }}" >
 	   			
 			</div>
 			<div class="form-group col-md-6" >
 				<label>Prenom</label>
-				 <input type="text" pattern="[a-zA-Z]*-?[a-zA-Z]*" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre prenom" value="{{ name|default('') }}" required>
+				 <input type="text" readonly class="form-control-plaintext" id="prenom" name="prenom" placeholder="Entrez votre prenom" value="{{ name|default('') }}" >
 	   			
 			</div>
 		</div>
+		
+			<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>Login</label>
+				 <input type="text" readonly class="form-control-plaintext" id="login" name="login" placeholder="Entrez un nom d'utilisateur" value="{{ username|default('') }}" >
+	   			
+			</div>
+			<div class="form-group col-md-6" >
+				<label>Email</label>
+				 <input type="email"   readonly class="form-control-plaintext"  name="email" placeholder="Entrez votre email" value="{{ email|default('') }}" >
+	   			
+			</div>
+
+		</div>
+	        
+	    </form>
+	<form id="formulaireAdresse" action="/updateAdress" method="post"> 
+		
 		<div class="form-row">
 			<div class="form-group col-md-3" >
 				<label>Numero de rue</label>
@@ -45,19 +65,14 @@
 			</div>
 
 		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6" >
-				<label>Login</label>
-				 <input type="text" pattern="[A-Za-z0-9]*" class="form-control" id="login" name="login" placeholder="Entrez un nom d'utilisateur" value="{{ username|default('') }}" required>
-	   			
-			</div>
-			<div class="form-group col-md-6" >
-				<label>Email</label>
-				 <input type="email"   class="form-control" id="email"  name="email" placeholder="Entrez votre email" value="{{ mail|default('') }}" required>
-	   			
-			</div>
-
-		</div>
+	
+	
+			<button type="submit" id="submit"  class="btn btn-primary">Mette à jour Adresse</button>
+	</form>
+	
+	<form id="formulaire" action="/updatePassword" method="post">
+	    
+	    
 		<div class="form-row">
 			<div class="form-group col-md-6" >
 				<label>Mot de Passe</label>
@@ -66,17 +81,16 @@
 			</div>
 			<div class="form-group col-md-6" >
 				<label>Verification mot de passe</label>
-				 <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"   class="form-control" id="mdpCheck"  name="mdpCheck" placeholder="Re-entrez mot de passe pour verification" required>
+				 <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"   class="form-control" id="mdpCheck" name="mdpCheck"  placeholder="Re-entrez mot de passe pour verification" required>
 	   			
 			</div>
-
-		</div>
-			<button type="submit" id="submit"  class="btn btn-primary">S'inscrire </button>
+            	<button type="submit" id="submit"  class="btn btn-primary">Mette à jour mot de passe</button>
+	    
 	</form>
 </div>
 {% endblock %}
 
 {% block scripts %}
     {{ parent() }}
-    <script src="{{ base_url}}/asset/js/script.js"></script> 
+  <script src="{{ base_url}}/asset/js/script.js"></script> 
 {% endblock %}

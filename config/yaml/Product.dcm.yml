@@ -4,7 +4,7 @@ Product:
     uniqueConstraints:
         Nom:
             columns:
-                - Nom
+                - Name
     id:
         id:
             type: integer
@@ -16,13 +16,13 @@ Product:
             generator:
                 strategy: IDENTITY
     fields:
-        nom:
+        name:
             type: string
             nullable: false
             length: 40
             options:
                 fixed: false
-            column: Nom
+            column: Name
         description:
             type: text
             nullable: false
@@ -30,10 +30,10 @@ Product:
             options:
                 fixed: false
             column: Description
-        prix:
+        price:
             type: float
             nullable: false
             precision: 10
             scale: 0
-            column: Prix
+            column: Price
     lifecycleCallbacks: {  }

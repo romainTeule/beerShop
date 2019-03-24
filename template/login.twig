@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+{% block head %}
+    {{ parent() }}
+    
+{% endblock %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+	<div id="container">
+	<form id="formulaire" action="/checkLogin" method="post"> 
+	
+		<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>Login</label>
+				 <input type="text" pattern="[A-Za-z0-9]*" class="form-control" id="login" name="login" placeholder="Entrez un nom d'utilisateur" required>
+	   			
+			</div>
+		
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>Mot de Passe</label>
+				 <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="form-control" id="mdp" name="mdp" placeholder="Entrez un mot de passe" required>
+	   			
+			</div>
+		
+
+		</div>
+			<button type="submit" id="submit"  class="btn btn-primary">S'inscrire </button>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+  
+{% endblock %}

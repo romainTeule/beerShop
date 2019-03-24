@@ -1,0 +1,79 @@
+{% extends "base.twig" %}
+{% block head %}
+    {{ parent() }}
+    
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+	    
+	  	<form id="formulaire" action="/naviguateCatalogue/{{crtOffset}}" method="get"> 
+		<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>Nom</label>
+				 <input type="text"  class="form-control" id="nom" name="nom" value="{{nom}}" placeholder="Entrez le nom du produit"  >
+	   			
+			</div>
+			<div class="form-group col-md-3" >
+				<label>Prix Minimum</label>
+				 <input type="number" class="form-control" id="prixMin" name="prixMin" value="{{prixMin}}" step="any" placeholder="Entrez un prix"  >
+	   			
+			</div>
+			<div class="form-group col-md-3" >
+				<label>Prix Maximum</label>
+				 <input type="number" class="form-control" id="prixMax" name="prixMax" value="{{prixMax}}" step="any" placeholder="Entrez un prix"  >
+	   			
+			</div>
+		</div>
+	        <button type="submit" id="submit"  class="btn btn-primary">Chercher </button>
+	        
+	        
+	        	{% if (crtOffset-5)>=0 %}
+  
+				  <button type="submit" value="Previous" formaction="/naviguateCatalogue/{{crtOffset-5}}" class="btn btn-primary"><span >Page précédente</span> </button>
+				  {% endif %}
+				
+				 {% if (crtOffset+5)<count %}
+				  
+				  <button type="submit" value="Next" formaction="/naviguateCatalogue/{{crtOffset+5}}" class="btn btn-primary"><span >Page Suivante</span> </button>
+  				{% endif %}
+
+	        
+	    </form>
+	    
+<div class="">
+	<div class="row">
+ {% for product in products %}
+ <div class="col-md-6">
+ 	<form> 
+		<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>Nom</label>
+				 <input type="text"  class="form-control-plaintext" id="nom" name="nom" value="{{product.name}}" placeholder="Entrez le nom du produit"  readonly >
+	   			
+			</div>
+			<div class="form-group col-md-3" >
+				<label>Prix</label>
+				 <input type="number" class="form-control-plaintext" id="prix" name="prix" step="any"  value="{{product.price}}" placeholder="Entrez le prix"  readonly>
+	   			
+			</div>
+			<div class="form-group col-md-9" >
+				<label>Description</label>
+				 <textarea   class="form-control-plaintext" id="description" name="description"  placeholder="Entrez une description"  readonly >{{product.description}}</textarea>
+	   			
+			</div>
+		</div>
+	        	
+	        
+	        
+	    </form>
+ 	</div>
+ {% endfor %}
+ </div>
+</div>
+
+</div>
+  
+
+{% endblock %}
