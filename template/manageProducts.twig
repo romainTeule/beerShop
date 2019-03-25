@@ -86,12 +86,12 @@
 
      {% if (crtOffset-step)>=0 %}
   
-  	<a href="/manageProducts/{{crtOffset-step}}"><span class="btn btn-primary"></span> Page précédente</a>
+  	<a href="/manageProducts/{{crtOffset-step}}" class="btn btn-success"> Page précédente</a>
   {% endif %}
 
  {% if (crtOffset+step)<count %}
   
-  	<a href="/manageProducts/{{crtOffset+step}}"><span class="btn btn-primary"></span> Page Suivante</a>
+  	<a href="/manageProducts/{{crtOffset+step}}" class="btn btn-success"> Page Suivante</a>
   {% endif %}
 
   </div>

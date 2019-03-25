@@ -31,12 +31,12 @@
 	        
 	        	{% if (crtOffset-step)>=0 %}
   
-				  <button type="submit" value="Previous" formaction="/naviguateCatalogue/{{crtOffset-step}}" class="btn btn-primary"><span >Page précédente</span> </button>
+				  <button type="submit" value="Previous" formaction="/naviguateCatalogue/{{crtOffset-step}}" class="btn btn-success"><span >Page précédente</span> </button>
 				  {% endif %}
 				
 				 {% if (crtOffset+step)<count %}
 				  
-				  <button type="submit" value="Next" formaction="/naviguateCatalogue/{{crtOffset+step}}" class="btn btn-primary"><span >Page Suivante</span> </button>
+				  <button type="submit" value="Next" formaction="/naviguateCatalogue/{{crtOffset+step}}" class="btn btn-success"><span >Page Suivante</span> </button>
   				{% endif %}
 
 	        

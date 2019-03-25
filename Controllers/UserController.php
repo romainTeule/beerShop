@@ -170,7 +170,10 @@ function validate($request,$response, $args){
     $user->setStreetnumber($streetNumber);
     $user->setCity($City);
     $user->setPostalcode($PostalCode);
-      $user->setRole(1);
+    
+     $RoleRepository = $entityManager->getRepository('Role');
+    $role=$RoleRepository->findOneBy(array('id'=>1));
+    $user->setRole($role);
     $entityManager->persist($user);
     $entityManager->flush();
     
@@ -209,10 +212,9 @@ function checkLogin($request,$response, $args){
            	    $_SESSION['user_admin'] = true;
            	}
            	
-            $params= array('title' => 'Validation', 'name' =>$allPostPutVars['nom']);
-            $template= $twig -> loadTemplate('validation.twig');
-        
-             return $response->write($template->render($params));
+            $response = $response->withRedirect('/account');
+      
+            return $response;
        }
     }
     
