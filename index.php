@@ -6,9 +6,9 @@ session_start();
 $loader= new Twig_Loader_Filesystem("template/");
 $twig= new Twig_Environment($loader, array('cache'=>false));
 
-
+$step=6;
 $twig->addGlobal('session', $_SESSION);
-
+$twig->addGlobal('step', $step);
 $config = [
     'settings' => [
         'displayErrorDetails' => true,
@@ -23,7 +23,7 @@ $config = [
 $app = new \Slim\App($config);
 
 
-
+require("Controllers/helper.php");
 require("Controllers/UserController.php");
 require("Controllers/ProductsController.php");
 
@@ -33,11 +33,12 @@ $app->get('/accueil', accueil)->setName('accueil');
 function accueil($request, $response, $args){
     global $twig;
      global $entityManager;
+     global $step;
      $products;
      
     
     $productRepository = $entityManager->getRepository('Product');
-      $products=$productRepository->findBy(array(),array(), 5, 0);
+      $products=$productRepository->findBy(array(),array(), $step, 0);
     $params= array('title' => 'Accueil','products'=>$products,);
     $template= $twig -> loadTemplate('accueil.twig');
     
@@ -86,7 +87,8 @@ $adminMiddleware = function ($request, $response, $next) {
     # needs to be logged in with.
     $adminRoutesArray = array(
         'manageProducts',
-        'updateProduct'
+        'updateProduct',
+        'deleteProduct'
     );
 
     if ((!isset(	$_SESSION['user_admin'] ) || 	$_SESSION['user_admin']==false) && in_array($routeName, $adminRoutesArray))

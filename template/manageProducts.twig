@@ -7,37 +7,49 @@
 {% block content %}
 
 	<div id="container">
-	    
-	  	<form id="formulaire" action="/updateProduct" method="post"> 
-		<div class="form-row">
-			<div class="form-group col-md-6" >
-				<label>Nom</label>
-				 <input type="text"  class="form-control" id="nom" name="nom"  placeholder="Entrez le nom du produit"  required>
-	   			
-			</div>
-			<div class="form-group col-md-3" >
-				<label>Prix</label>
-				 <input type="number" class="form-control" id="prix" name="prix" step="any" placeholder="Entrez le prix"  required>
-	   			
-			</div>
-			<div class="form-group col-md-6" >
-				<label>Description</label>
-				 <textarea   class="form-control" id="description" name="description" placeholder="Entrez une description"  required ></textarea>
-	   			
-			</div>
-			
-			 <input type="hidden" id="offset" name="offset" value="{{crtOffset}}">
-		</div>
-	        	<button type="submit" id="submit"  class="btn btn-primary">Ajouter produit au catalogue </button>
-	        
-	        
-	    </form>
-	    
-<div class="">
-	<div class="row">
+		<div class="row">
+		    <div class="col-md-6 offset-md-3">
+		    
+			  	<form id="formulaireCreate" action="/updateProduct/{{crtOffset}}" method="post"> 
+				<div class="form-row">
+					<div class="form-group col-md-6" >
+						<label>Nom</label>
+						 <input type="text"  class="form-control" id="nom" name="nom"  placeholder="Entrez le nom du produit"  required>
+			   			
+					</div>
+					<div class="form-group col-md-3" >
+						<label>Prix</label>
+						 <input type="number" class="form-control" id="prix" name="prix" step="any" placeholder="Entrez le prix"  required>
+			   			
+					</div>
+				</div>	
+				<div class="form-row">
+					<div class="form-group col-md-9" >
+						<label>Description</label>
+						 <textarea   class="form-control" id="description" name="description" placeholder="Entrez une description"  required ></textarea>
+			   			
+					</div>
+					
+					 <input type="hidden" id="offset" name="offset" value="{{crtOffset}}">
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6" >
+						<label>URL Image</label>
+						<input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" >
+			   			
+					</div>
+				</div>
+			        	<button type="submit" id="submit"  class="btn btn-primary">Ajouter produit au catalogue </button>
+			        
+			        
+			    </form>
+	    	</div>
+	    </div>
+
+<div class="row">
  {% for product in products %}
  <div class="col-md-6">
- 	<form id="formulaire" action="/updateProduct/{{product.id}}" method="post"> 
+ 	<form id="formulaireUpdate" action="/updateProduct/{{crtOffset}}/{{product.id}}" method="post"> 
 		<div class="form-row">
 			<div class="form-group col-md-6" >
 				<label>Nom</label>
@@ -49,31 +61,44 @@
 				 <input type="number" class="form-control" id="prix" name="prix" step="any"  value="{{product.price}}" placeholder="Entrez le prix"  required>
 	   			
 			</div>
+				</div>	
+		<div class="form-row">
 			<div class="form-group col-md-9" >
 				<label>Description</label>
 				 <textarea   class="form-control" id="description" name="description"  placeholder="Entrez une description"  required >{{product.description}}</textarea>
 	   			 <input type="hidden" id="offset" name="offset" value="{{crtOffset}}">
 			</div>
 		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6" >
+				<label>URL Image</label>
+				<input type="url" name="url" id="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" value="{{product.img}}" >
+	   			
+			</div>
+		</div>
 	        	<button type="submit" id="submit"  class="btn btn-primary">Modifier produit </button>
-	        
+	        <a class="btn btn-danger" href="/deleteProduct/{{crtOffset}}/{{product.id}}">Supprimer Produit</a>
 	        
 	    </form>
  		</div>
     {% endfor %}
-    </div>
-    </div>
-     {% if (crtOffset-5)>=0 %}
+  </div>
+
+     {% if (crtOffset-step)>=0 %}
   
-  	<a href="/manageProducts/{{crtOffset-5}}"><span class="btn btn-primary"></span> Page précédente</a>
+  	<a href="/manageProducts/{{crtOffset-step}}"><span class="btn btn-primary"></span> Page précédente</a>
   {% endif %}
 
- {% if (crtOffset+5)<count %}
+ {% if (crtOffset+step)<count %}
   
-  	<a href="/manageProducts/{{crtOffset+5}}"><span class="btn btn-primary"></span> Page Suivante</a>
+  	<a href="/manageProducts/{{crtOffset+step}}"><span class="btn btn-primary"></span> Page Suivante</a>
   {% endif %}
 
   </div>
   
  
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+
 {% endblock %}

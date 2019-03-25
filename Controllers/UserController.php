@@ -259,7 +259,7 @@ function accountInformation($request,$response, $args){
     $user = $userRepository->findOneBy(array('username' =>$_SESSION['user_id']));
     
     
-    $params= array('title' => 'Mon Compte','lastname'=>$user->getLastname(),'name'=>$user->getName(),'email'=>$user->getEmail(),'username'=>$user->getUsername(),'street'=>$user->getStreet(),'streetnumber'=>$user->getStreetNumber(),'City'=>$user->getCity(),'PostalCode'=>$user->getPostalCode() );
+    $params= array('title' => 'Mon Compte','lastname'=>$user->getLastname(),'name'=>$user->getName(),'email'=>$user->getEmail(),'username'=>$user->getUsername(),'street'=>$user->getStreet(),'streetnumber'=>$user->getStreetNumber(),'City'=>$user->getCity(),'PostalCode'=>$user->getPostalCode() ,'successMsg'=>TempData::get("successMsg"), 'errorMsg' =>TempData::get("errorMsg"));
       
     $template= $twig -> loadTemplate('accountInformation.twig');
     
@@ -323,12 +323,12 @@ function updateAdress($request,$response, $args){
      //if error, redirect to form with previous value and error message
      if($hasError){
            $log->warning('Error updating adress');
+           
+             TempData::set("errorMsg",  $errorMessage);
          
-          $params= array('title' => 'Mon Compte','lastname'=>$user->getLastname(),'name'=>$user->getName(),'email'=>$user->getEmail(),'username'=>$user->getUsername(),'street'=>$user->getStreet(),'streetnumber'=>$user->getStreetNumber(),'City'=>$user->getCity(),'PostalCode'=>$user->getPostalCode(),'errorMsg'=>$errorMessage );
+        $response = $response->withRedirect('/account');
       
-          $template= $twig -> loadTemplate('accountInformation.twig');
-    
-        return $response->write($template->render($params));
+     return $response;
          
   
      }
@@ -344,7 +344,7 @@ function updateAdress($request,$response, $args){
     
     $entityManager->persist($user);
     $entityManager->flush();
-    
+      TempData::set("successMsg", "Change saved");
     $response = $response->withRedirect('/account');
       
      return $response;
@@ -389,11 +389,9 @@ function updatePassword($request,$response, $args){
      if($hasError){
            $log->warning('Error updating password');
          
-          $params= array('title' => 'Mon Compte','lastname'=>$user->getLastname(),'name'=>$user->getName(),'email'=>$user->getEmail(),'username'=>$user->getUsername(),'street'=>$user->getStreet(),'streetnumber'=>$user->getStreetNumber(),'City'=>$user->getCity(),'PostalCode'=>$user->getPostalCode(),'errorMsg'=>$errorMessage );
-      
-          $template= $twig -> loadTemplate('accountInformation.twig');
-    
-        return $response->write($template->render($params));
+            TempData::set("errorMsg", $errorMessage);
+         
+        $response = $response->withRedirect('/account');
          
   
      }
@@ -405,6 +403,7 @@ function updatePassword($request,$response, $args){
     
     $entityManager->persist($user);
     $entityManager->flush();
+    TempData::set("successMsg", "Change saved");
     
     $response = $response->withRedirect('/account');
       

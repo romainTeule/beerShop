@@ -13,7 +13,7 @@
     <body>
         
         {%include 'navbar.twig'%}
-        {% if errorMsg is defined %}
+        {% if errorMsg is defined and errorMsg is not null%}
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
              {{errorMsg}}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -24,7 +24,7 @@
         
         
         
-        {% if successMsg is defined %}
+        {% if successMsg is defined and successMsg is not null %}
           <div class="alert alert-success alert-dismissible fade show" role="alert">
              {{successMsg}}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -43,6 +43,24 @@
 </html>
 
 {% block scripts %}
-    <script src="{{ base_url}}/asset/js/jquery-3.3.1.min.js"></script> 
-   <script src="{{ base_url}}/asset/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="{{ base_url}}/asset/js/jquery-3.3.1.min.js"></script> 
+   <script type="text/javascript" src="{{ base_url}}/asset/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="{{ base_url}}/asset/js/script.js"></script> 
+  	    <script>
+$(document).ready(function(){
+	if ($("textarea").length > 0) {
+    $("textarea").each(function () {
+        resizeTextArea($(this));
+        $(this).off("keyup.textarea").on("keyup.textarea", function () {
+            resizeTextArea($(this));
+        });
+    });
+}
+
+function resizeTextArea($element) {
+    $element.height($element[0].scrollHeight);
+}
+
+});
+    </script>
      {% endblock %}

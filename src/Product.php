@@ -42,6 +42,13 @@ class Product
      */
     private $price;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="img", type="text", length=65535, nullable=true)
+     */
+    private $img;
+
 
     /**
      * Get id
@@ -123,6 +130,30 @@ class Product
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     *
+     * @return Product
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string
+     */
+    public function getImg()
+    {
+        return $this->img;
     }
 }
 

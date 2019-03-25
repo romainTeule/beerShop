@@ -36,4 +36,10 @@ Product:
             precision: 10
             scale: 0
             column: Price
+        img:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
     lifecycleCallbacks: {  }
