@@ -19,4 +19,11 @@ background-color: #ffffff;
  background-repeat:no-repeat;
 background-attachment: fixed;
 background-size: cover;
+
+
+padding-top: 56px;
+}
+
+.navbar li{
+    margin-left:10px;
 }
