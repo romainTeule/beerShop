@@ -33,12 +33,37 @@
           </button>
         </div>
         {% endif %}
-        <h2 class="text-center">{{title}}</h2>
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h2 class="text-center">{{title}}</h2>
+        </div>
+        <br/>
         <div id="content">
             {% block content %}{% endblock %}
         </div>
-        
+        <br/>
       
+      
+      
+      
+  <div id="modalPassword" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Erreur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Les mots de passe de ne correspondent pas</p>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
  
     </body>
 </html>
@@ -52,9 +77,9 @@ $(document).ready(function(){
 	if ($("textarea").length > 0) {
     $("textarea").each(function () {
         resizeTextArea($(this));
-        $(this).off("keyup.textarea").on("keyup.textarea", function () {
+       /* $(this).off("keyup.textarea").on("keyup.textarea", function () {
             resizeTextArea($(this));
-        });
+        });*/
     });
 }
 

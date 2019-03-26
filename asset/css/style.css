@@ -27,3 +27,8 @@ padding-top: 56px;
 .navbar li{
     margin-left:10px;
 }
+
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}

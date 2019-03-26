@@ -9,6 +9,7 @@
 	<div id="container">
 		<div class="row">
 		    <div class="col-md-6 offset-md-3">
+		    	<h4>Nouveau Produit</h4>
 		    
 			  	<form id="formulaireCreate" action="/updateProduct/{{crtOffset}}" method="post"> 
 				<div class="form-row">
@@ -45,7 +46,7 @@
 			    </form>
 	    	</div>
 	    </div>
-
+<br/>
 <div class="row">
  {% for product in products %}
  <div class="col-md-6">
@@ -83,7 +84,8 @@
  		</div>
     {% endfor %}
   </div>
-
+ <br/>
+  
      {% if (crtOffset-step)>=0 %}
   
   	<a href="/manageProducts/{{crtOffset-step}}" class="btn btn-success"> Page précédente</a>
@@ -94,8 +96,7 @@
   	<a href="/manageProducts/{{crtOffset+step}}" class="btn btn-success"> Page Suivante</a>
   {% endif %}
 
-  </div>
-  
+ </div>
  
 {% endblock %}
 {% block scripts %}

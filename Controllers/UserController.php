@@ -212,7 +212,7 @@ function checkLogin($request,$response, $args){
            	    $_SESSION['user_admin'] = true;
            	}
            	
-            $response = $response->withRedirect('/account');
+            $response = $response->withRedirect('/');
       
             return $response;
        }

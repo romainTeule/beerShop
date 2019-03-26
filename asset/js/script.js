@@ -16,7 +16,8 @@
 	    if(!passWordCheck())
 	    {
 			
-				alert("Mauvais mot de passe...");
+			$("#modalPassword").modal('show');
+				//alert("Mauvais mot de passe...");
 				e.preventDefault();
 	    }
 	});
