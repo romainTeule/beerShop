@@ -7,8 +7,10 @@ $loader= new Twig_Loader_Filesystem("template/");
 $twig= new Twig_Environment($loader, array('cache'=>false));
 
 $step=6;
+
 $twig->addGlobal('session', $_SESSION);
 $twig->addGlobal('step', $step);
+
 $config = [
     'settings' => [
         'displayErrorDetails' => true,
@@ -105,8 +107,9 @@ $adminMiddleware = function ($request, $response, $next) {
     return $response;
 };
 
-// Apply the middleware to every request.
+// Apply the middlewares to every request.
 $app->add($loggedInMiddleware);
 $app->add($adminMiddleware);
+
 $app -> run();
 ?>
